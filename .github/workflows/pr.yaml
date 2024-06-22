@@ -4,22 +4,23 @@
 
 name: Per PR Tests
 
-on: pull_request:
-  types:
-    - opened
-    - edited
-    - synchronize
-    - ready_for_review
-  branches:
-    - main
+on: 
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - ready_for_review
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}--${{ github.ref || github.run_id }}
-  cancel-in-progress:true
+  cancel-in-progress: true
 
 jobs:
   pr-check:
-    runs: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
 
     - name: Checkout the PR
