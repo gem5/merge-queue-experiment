@@ -1,0 +1,23 @@
+# This workflow checks the entire merge group doesn't have a file caleld
+# 'file3'. This si simply for ease of testing merge queues.
+
+name: Merge Group Tests
+
+on: merge_group:
+  branches: 
+    - main
+
+jobs:
+  merge-group-check:
+    runs: ubuntu-latest
+    steps:
+
+    - name: Checkout the Merge Group
+      uses: actions/checkout@v4
+
+    - name: Run Check
+      run: |
+        if [ -f file3 ]
+        then
+          exit 1
+        fi
