@@ -1,0 +1,21 @@
+name: Push Event Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_file_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for file
+        run: |
+          if [ -f bla ]; then
+            echo "Error: File 'bla' found in branch 'main'"
+            exit 1
+          fi

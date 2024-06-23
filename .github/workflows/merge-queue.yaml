@@ -4,25 +4,10 @@
 name: Merge Group Tests
 
 on:
-  pull_request:
-    branches:
-      - main
   merge_group:
-    branches: 
-       - main
 
 jobs:
   merge-group-check:
     runs-on: ubuntu-latest
     steps:
-
-    - name: Checkout the Merge Group
-      uses: actions/checkout@v4
-
-    - name: Run Check
-      if: ${{ github.event_name == 'merge_group' }}
-      run: |
-        if [ -f file3 ]
-        then
-          exit 1
-        fi
+      - run: echo "This is a merge group test"
